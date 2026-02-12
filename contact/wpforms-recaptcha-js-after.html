@@ -1,0 +1,23 @@
+if (!Element.prototype.matches) { Element.prototype.matches =
+Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+} if (!Element.prototype.closest) { Element.prototype.closest = function (s) {
+var el = this; do { if (Element.prototype.matches.call(el, s)) { return el; } el
+= el.parentElement || el.parentNode; } while (el !== null && el.nodeType === 1);
+return null; }; } var wpformsDispatchEvent = function (el, ev, custom) { var e =
+document.createEvent(custom ? "CustomEvent" : "HTMLEvents"); custom ?
+e.initCustomEvent(ev, true, true, false) : e.initEvent(ev, true, true);
+el.dispatchEvent(e); }; var wpformsRecaptchaLoad = function () {
+Array.prototype.forEach.call(document.querySelectorAll(".g-recaptcha"), function
+(el) { try { var recaptchaID = grecaptcha.render(el, { "callback": function () {
+wpformsRecaptchaCallback(el); }, "error-callback": function () {
+wpformsRecaptchaErrorCallback(el); } }, true);
+el.closest("form").querySelector("button[type=submit]").recaptchaID =
+recaptchaID; } catch (error) {} }); wpformsDispatchEvent(document,
+"wpformsRecaptchaLoaded", true); }; var wpformsRecaptchaCallback = function (el)
+{ var $form = el.closest("form"); if (typeof wpforms.formSubmit === "function")
+{ wpforms.formSubmit($form); } else {
+$form.querySelector("button[type=submit]").recaptchaID = false; $form.submit();
+} }; var wpformsRecaptchaErrorCallback = function (el) { var $form =
+el.closest("form");
+$form.querySelector("button[type=submit]").dataset.captchaInvalid = true; }; //#
+sourceURL=wpforms-recaptcha-js-after
