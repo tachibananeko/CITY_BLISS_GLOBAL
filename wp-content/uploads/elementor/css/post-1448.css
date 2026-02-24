@@ -147,7 +147,7 @@
   .elementor-element.elementor-element-bea69d4
   > .elementor-motion-effects-container
   > .elementor-motion-effects-layer {
-  background-image: url("/wp-content/uploads/2023/12/ackgroundPattern-.jpg");
+  background-image: url("wp-content/uploads/2023/12/ackgroundPattern-.jpg");
   background-position: center center;
   background-repeat: repeat-y;
   background-size: cover;
@@ -1333,7 +1333,7 @@
     .elementor-element.elementor-element-bea69d4
     > .elementor-motion-effects-container
     > .elementor-motion-effects-layer {
-    background-image: url("/wp-content/uploads/2023/12/ackgroundPattern-.jpg");
+    background-image: url("wp-content/uploads/2023/12/ackgroundPattern-.jpg");
     background-position: 51% 29%;
   }
   .elementor-1448
