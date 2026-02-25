@@ -6787,8 +6787,8 @@
 														data-id="3f5fb89" data-element_type="widget"
 														data-widget_type="wpforms.default">
 														<div class="elementor-widget-container">
-															<div class="wpforms-container " id="wpforms-2179">
-																<form>
+															<div class="wpforms-container " id="form_body">
+																<form id="contactForm">
 																	<noscript class="wpforms-error-noscript">Please
 																		enable JavaScript in your browser to complete
 																		this form.</noscript>
@@ -6806,7 +6806,7 @@
 																					<input type="text"
 																						id="wpforms-2179-field_0"
 																						class="wpforms-field-name-first wpforms-field-required"
-																						name="wpforms[fields][0][first]"
+																						name="firstname"
 																						required><label
 																						for="wpforms-2179-field_0"
 																						class="wpforms-field-sublabel after ">First</label>
@@ -6816,7 +6816,7 @@
 																					<input type="text"
 																						id="wpforms-2179-field_0-last"
 																						class="wpforms-field-name-last wpforms-field-required"
-																						name="wpforms[fields][0][last]"
+																						name="lastname"
 																						required><label
 																						for="wpforms-2179-field_0-last"
 																						class="wpforms-field-sublabel after ">Last</label>
@@ -6831,7 +6831,7 @@
 																					class="wpforms-required-label">*</span></label><input
 																				type="email" id="wpforms-2179-field_1"
 																				class="wpforms-field-large wpforms-field-required"
-																				name="wpforms[fields][1]"
+																				name="email"
 																				spellcheck="false" required></div>
 																		<div id="wpforms-2179-field_2-container"
 																			class="wpforms-field wpforms-field-textarea"
@@ -6841,7 +6841,7 @@
 																				Message</label><textarea
 																				id="wpforms-2179-field_2"
 																				class="wpforms-field-medium"
-																				name="wpforms[fields][2]"></textarea>
+																				name="message"></textarea>
 																		</div>
 																		<div id="wpforms-2179-field_6-container"
 																			class="wpforms-field wpforms-field-checkbox"
@@ -6886,7 +6886,37 @@
 																			style="display: none;" width="26"
 																			height="26" alt="Loading"></div>
 																</form>
-															</div> <!-- .wpforms-container -->
+															</div>
+
+															<div>
+																送出成功
+															</div>
+
+															<script>
+																	const form_body = document.querySelector('#form_body');
+																	const form = document.querySelector('#contactForm');
+																	form.addEventListener('submit', async function(e) {
+																		e.preventDefault(); // 阻止跳轉
+
+																		const formData = new FormData(form);
+																		try {
+																			const response = await fetch('../send.php', {
+																				method: 'POST',
+																				body: formData
+																			});
+
+																			const result = await response.json();
+																			if (result.data) {
+																				form.reset();
+																				form_body.style.display = 'none';
+																			}
+
+																		} catch (error) {
+																			console.error(error);
+																		}
+																	});
+
+																</script>
 														</div>
 													</div>
 												</div>
