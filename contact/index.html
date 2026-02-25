@@ -6888,13 +6888,14 @@
 																</form>
 															</div>
 
-															<div>
+															<div id="send_ok" style="display: none;">
 																送出成功
 															</div>
 
 															<script>
 																	const form_body = document.querySelector('#form_body');
 																	const form = document.querySelector('#contactForm');
+																	const send_ok = document.querySelector('#send_ok');
 																	form.addEventListener('submit', async function(e) {
 																		e.preventDefault(); // 阻止跳轉
 
@@ -6909,6 +6910,7 @@
 																			if (result.data) {
 																				form.reset();
 																				form_body.style.display = 'none';
+																				send_ok.style.display = '';
 																			}
 
 																		} catch (error) {
