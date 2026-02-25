@@ -79,9 +79,8 @@ $body = '
 ';
 
 // 目標信箱陣列
-// 'iopiop0806@gmail.com'
 $recipients = [
-    'redsinsue@gmail.com'
+    'iopiop0806@gmail.com'
 ];
 
 // 郵件主題
