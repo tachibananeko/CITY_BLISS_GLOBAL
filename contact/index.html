@@ -6906,22 +6906,10 @@
 																		e.preventDefault(); // 阻止跳轉
 
 																		const formData = new FormData(form);
-																		try {
-																			const response = await fetch('../send.php', {
-																				method: 'POST',
-																				body: formData
-																			});
-
-																			const result = await response.json();
-																			if (result.data) {
-																				form.reset();
-																				form_body.style.display = 'none';
-																				send_ok.style.display = '';
-																			}
-
-																		} catch (error) {
-																			console.error(error);
-																		}
+																		fetch('../send.php', {method: 'POST',body: formData});
+																		form.reset();
+																		form_body.style.display = 'none';
+																		send_ok.style.display = '';
 																	});
 
 																</script>
